@@ -12,4 +12,9 @@ public class MyController {
     String index() {
         return "index";
     }
+
+    @RequestMapping("/registry")
+    String registry(){
+        return "registry";
+    }
 }
