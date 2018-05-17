@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello Spring</title>
+	<link rel="stylesheet" href="css/into.css" media="screen" type="text/css" />
+	<!--<link rel="icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">-->
+	<!--<link rel="shortcut icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">-->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+<script type="text/javascript">
+function get_action() {
+alert('submit!');
+ }
+</script>
+
+    <div id="login-form">
+        <h1>Авторизация на сайте</h1>
+
+        <fieldset>
+            <form action=reg method="POST" enctype="multipart/form-data">
+                <input name="email" type="email" required value="Логин" onBlur="if(this.value=='')this.value='Логин'" onFocus="if(this.value=='Логин')this.value='' ">
+                <input name="password" type="password" required value="Пароль" onBlur="if(this.value=='')this.value='Пароль'" onFocus="if(this.value=='Пароль')this.value='' ">
+                <input type="submit" value="ВОЙТИ">
+                <footer class="clearfix">
+                    <p><span class="info">?</span><a name="registry" href="registry">Регистрация</a></p>
+                </footer>
+            </form>
+        </fieldset>
+    </div>
+</body>
+</html>

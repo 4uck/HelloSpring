@@ -1,0 +1,11 @@
+h1 {
+  text-align: center;
+  color: #a52a2a; /* Цвет заголовка */
+  font-size: 50pt; /* Размер шрифта в пунктах */
+  font-family: Georgia, Times, serif; /* Семейство шрифтов */
+  font-weight: normal; /* Нормальное начертание текста  */
+}
+table {
+    width: 100%; /* Ширина таблицы */
+    height: 100%; /* Высота таблицы */
+}
