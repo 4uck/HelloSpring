@@ -12,11 +12,17 @@
 </head>
 <body>
 
+<script type="text/javascript">
+function get_action() {
+alert('submit!');
+ }
+</script>
+
     <div id="login-form">
         <h1>Авторизация на сайте</h1>
 
         <fieldset>
-            <form action="javascript:void(0);" method="get">
+            <form action=reg method="POST" content="application/json">
                 <input type="email" required value="Логин" onBlur="if(this.value=='')this.value='Логин'" onFocus="if(this.value=='Логин')this.value='' ">
                 <input type="password" required value="Пароль" onBlur="if(this.value=='')this.value='Пароль'" onFocus="if(this.value=='Пароль')this.value='' ">
                 <input type="submit" value="ВОЙТИ">
