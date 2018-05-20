@@ -22,7 +22,9 @@ public class MongoConfig extends AbstractMongoConfiguration {
     public MongoClient mongoClient() {
 
         MongoCredential mongoCredential = MongoCredential.
-                createScramSha1Credential(env.getProperty("mongo.userName"), "admin", env.getProperty("mongo.password").toCharArray());
+                createScramSha1Credential(env.getProperty("mongo.userName"),
+                        env.getProperty("mongo.sourcedb"),
+                        env.getProperty("mongo.password").toCharArray());
 
         MongoClientOptions options = MongoClientOptions.builder().build();
 
