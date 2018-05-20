@@ -12,14 +12,33 @@
 </head>
 <body>
 
+<!--<script type="text/javascript">-->
+    <!--function getAction(){-->
+    <!--var email = document.forms.data['email'].value;-->
+    <!--var pass = document.forms.data['password'].value;-->
+    <!--var confPass = document.forms.data['confPass'].value;-->
+    <!--if (email == '' || pass == '' || confPass == ''){-->
+    <!--alert("Fields must be filled!!!");-->
+    <!--return false;-->
+    <!--}-->
+    <!--if (pass != confPass){-->
+    <!--alert('Password and confirm must be the same!!');-->
+    <!--return false;-->
+    <!--}-->
+    <!--return true;-->
+    <!--}-->
+<!--</script>-->
+
+<script src="js/script.js"></script>
+
 <div id="login-form">
     <h1>Регистрация на сайте</h1>
 
     <fieldset>
-        <form action="javascript:void(0);" method="get">
-            <input type="email" required value="Логин" onBlur="if(this.value=='')this.value='Логин'" onFocus="if(this.value=='Логин')this.value='' ">
-            <input type="password" required value="Пароль" onBlur="if(this.value=='')this.value='Пароль'" onFocus="if(this.value=='Пароль')this.value='' ">
-            <input type="password" required value="Повторите пароль" onBlur="if(this.value=='')this.value='Пароль'" onFocus="if(this.value=='Пароль')this.value='' ">
+        <form name="data" action=registryrequest method="POST" enctype="multipart/form-data" onsubmit="return getAction()">
+            <input name="email" type="email" placeholder="email">
+            <input name="password" type="password" placeholder="Пароль">
+            <input name="confPass" type="password" placeholder="Повторите пароль">
             <input type="submit" value="Регистрация">
         </form>
     </fieldset>

@@ -22,9 +22,9 @@ alert('submit!');
         <h1>Авторизация на сайте</h1>
 
         <fieldset>
-            <form action=reg method="POST" content="application/json">
-                <input type="email" required value="Логин" onBlur="if(this.value=='')this.value='Логин'" onFocus="if(this.value=='Логин')this.value='' ">
-                <input type="password" required value="Пароль" onBlur="if(this.value=='')this.value='Пароль'" onFocus="if(this.value=='Пароль')this.value='' ">
+            <form action=authrequest method="POST" enctype="multipart/form-data">
+                <input name="email" type="email" required value="Логин" onBlur="if(this.value=='')this.value='Логин'" onFocus="if(this.value=='Логин')this.value='' ">
+                <input name="password" type="password" required value="Пароль" onBlur="if(this.value=='')this.value='Пароль'" onFocus="if(this.value=='Пароль')this.value='' ">
                 <input type="submit" value="ВОЙТИ">
                 <footer class="clearfix">
                     <p><span class="info">?</span><a name="registry" href="registry">Регистрация</a></p>
