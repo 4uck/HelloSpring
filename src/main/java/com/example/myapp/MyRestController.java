@@ -92,6 +92,12 @@ public class MyRestController {
 //        return new Token();
 //    }
 
+    @RequestMapping("/users")
+    public @ResponseBody String getUsers() {
+        return "{\"users\":[{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"}," +
+                "{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}]}";
+    }
+
     @RequestMapping(value = "/reg", consumes = {"application/json;charset=UTF-8"})
     public @ResponseBody User reg(@RequestBody User user){
 
