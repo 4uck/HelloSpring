@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Document(collection = "user")
@@ -21,6 +22,8 @@ public class User {
     private String login;
     private String password;
 
+    private List<TimeStamp> timestamps;
+
     public User() {
     }
 
@@ -36,5 +39,9 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public List<TimeStamp> getTimestamps() {
+        return timestamps;
     }
 }
