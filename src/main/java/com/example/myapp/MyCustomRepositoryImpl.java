@@ -15,6 +15,6 @@ public class MyCustomRepositoryImpl implements MyCustomRepository {
     public void pushMethod(String login, TimeStamp timeStamp) {
         mongoTemplate.updateFirst(
                 Query.query(Criteria.where("login").is(login)),
-                new Update().push("timestamp", timeStamp), User.class);
+                new Update().push("timestamp", timeStamp), Account.class);
     }
 }

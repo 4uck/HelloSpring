@@ -1,6 +1,8 @@
 package com.example.myapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -13,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class MyController {
 
     @Autowired
-    private UsersRepository repository;
+    private AccountRepository repository;
 
     @RequestMapping("/")
 //    @ResponseBody
@@ -33,11 +35,18 @@ public class MyController {
             @RequestPart("confPass") @Valid @NotNull String confPass
     ) {
 
+        PasswordEncoder encoder =
+                PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+        password = encoder.encode(password);
+
         if (repository.existsByLoginAndPassword(email, password)) {
 
         }
 
-        User user = new User(email, password);
+
+
+        Account account = new Account(email, password);
 
         System.out.println("////////////////////////");
         System.out.println("////////////////////////");
@@ -46,22 +55,22 @@ public class MyController {
         System.out.println("//////////////////////");
         System.out.println("//////////////////////");
 
-        repository.save(user);
+        repository.save(account);
 
         return index();
     }
 
     @RequestMapping(value = "/authrequest", consumes = {"multipart/form-data"})
     public @ResponseBody
-    User authRequest(
+    Account authRequest(
             @RequestPart("email") @Valid @NotNull String email,
             @RequestPart("password") @Valid @NotNull String password
     ) {
 
 
         if (repository.existsByLoginAndPassword(email, password))
-            return new User(email, password);
+            return new Account(email, password);
 
-        return new User("not", "found");
+        return new Account("not", "found");
     }
 }

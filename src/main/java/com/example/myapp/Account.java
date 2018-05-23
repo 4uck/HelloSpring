@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Document(collection = "user")
-public class User {
+public class Account {
 
     private static final AtomicLong counter = new AtomicLong();
 
@@ -24,10 +24,10 @@ public class User {
 
     private List<TimeStamp> timestamps;
 
-    public User() {
+    public Account() {
     }
 
-    public User(String login, String password) {
+    public Account(String login, String password) {
         this.login = login;
         this.password = password;
         this.id = counter.incrementAndGet();

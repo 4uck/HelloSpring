@@ -12,7 +12,7 @@ import java.util.Date;
 public class MyRestController {
 
     @Autowired
-    private UsersRepository repository;
+    private AccountRepository repository;
 
     @Autowired
     private MyCustomRepositoryImpl myCustomRepositoryImpl;
@@ -21,9 +21,9 @@ public class MyRestController {
     public Token auth(@RequestHeader(value = "login", required = true) String login,
                       @RequestHeader(value = "password", required = true) String password){
 
-        User user = repository.findByLogin(login);
+        Account account = repository.findByLogin(login);
 
-        if (user.getPassword().equals(password))
+        if (account.getPassword().equals(password))
             return new Token();
 
         return null;
@@ -46,16 +46,16 @@ public class MyRestController {
 //    }
 
     @RequestMapping(value = "/checkUser", consumes = {"application/json;charset=UTF-8"})
-    public ResponseEntity checkUser(@RequestBody User user){
+    public ResponseEntity checkUser(@RequestBody Account account){
 
         System.out.println("////////////////////////");
         System.out.println("////////////////////////");
-        System.out.println(user.getLogin());
-        System.out.println(user.getPassword());
+        System.out.println(account.getLogin());
+        System.out.println(account.getPassword());
         System.out.println("//////////////////////");
         System.out.println("//////////////////////");
 
-        if (repository.existsByLoginAndPassword(user.getLogin(), user.getPassword())){
+        if (repository.existsByLoginAndPassword(account.getLogin(), account.getPassword())){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
@@ -99,15 +99,15 @@ public class MyRestController {
     }
 
     @RequestMapping(value = "/reg", consumes = {"application/json;charset=UTF-8"})
-    public @ResponseBody User reg(@RequestBody User user){
+    public @ResponseBody Account reg(@RequestBody Account account){
 
         System.out.println("////////////////////////");
         System.out.println("////////////////////////");
-        System.out.println(user.getLogin());
-        System.out.println(user.getPassword());
+        System.out.println(account.getLogin());
+        System.out.println(account.getPassword());
         System.out.println("//////////////////////");
         System.out.println("//////////////////////");
 
-        return user;
+        return account;
     }
 }

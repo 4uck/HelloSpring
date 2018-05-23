@@ -6,7 +6,6 @@ public class AccountCredentials {
     private String password;
     // getters & setters
 
-
     public String getUsername() {
         return username;
     }
