@@ -21,6 +21,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 @EnableAutoConfiguration
 public class DemoApplication {
@@ -47,8 +50,6 @@ public class DemoApplication {
                 @Override
                 public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-                    System.out.println("HELLO!");
-
                     Account account = accountRepository.findByLogin(username);
                     if(account != null) {
                         return new User(account.getLogin(), account.getPassword(), true, true, true, true,
@@ -69,9 +70,22 @@ public class DemoApplication {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
+
+            List<String> accessList = new ArrayList<String>();
+
+            accessList.add("/css/**");
+            accessList.add("/js/**");
+            accessList.add("/images/**");
+            accessList.add("/authrequest");
+            accessList.add("/registryrequest");
+            accessList.add("/registry");
+            accessList.add("/");
+            accessList.add("/checkUser");
+            accessList.add("/favicon.ico");
+
             http.csrf().disable().authorizeRequests()
-                    .antMatchers("/registryrequest").permitAll()
-                    .antMatchers(HttpMethod.POST, "/login").permitAll()
+                    .antMatchers(accessList.toArray(new String[accessList.size()])).permitAll()
+//                    .antMatchers(HttpMethod.POST, "/login").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     // We filter the api/login requests

@@ -29,22 +29,6 @@ public class MyRestController {
         return null;
     }
 
-//    @RequestMapping("/checkUser")
-//    public Token checkUser(@RequestHeader(value = "login", required = true) String login,
-//                      @RequestHeader(value = "password", required = true) String password){
-//
-//        System.out.println("/////////////////////////");
-//        System.out.println("/////////////////////////");
-//        System.out.println("/////////////////////////");
-//        System.out.println(login);
-//        System.out.println(password);
-//        System.out.println("/////////////////////////");
-//        System.out.println("/////////////////////////");
-//        System.out.println("/////////////////////////");
-//
-//        return new Token();
-//    }
-
     @RequestMapping(value = "/checkUser", consumes = {"application/json;charset=UTF-8"})
     public ResponseEntity checkUser(@RequestBody Account account){
 
@@ -92,12 +76,6 @@ public class MyRestController {
 //        return new Token();
 //    }
 
-    @RequestMapping("/users")
-    public @ResponseBody String getUsers() {
-        return "{\"users\":[{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"}," +
-                "{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}]}";
-    }
-
     @RequestMapping(value = "/reg", consumes = {"application/json;charset=UTF-8"})
     public @ResponseBody Account reg(@RequestBody Account account){
 
@@ -109,5 +87,11 @@ public class MyRestController {
         System.out.println("//////////////////////");
 
         return account;
+    }
+
+    @RequestMapping("/users")
+    public @ResponseBody String getUsers() {
+        return "{\"users\":[{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"}," +
+                "{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}]}";
     }
 }
