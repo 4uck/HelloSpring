@@ -12,11 +12,19 @@ import java.util.Date;
 
 import static java.util.Collections.emptyList;
 
-class TokenAuthenticationService {
+public class TokenAuthenticationService {
     static final long EXPIRATIONTIME = 864_000_000; // 10 days
     static final String SECRET = "ThisIsASecret";
     static final String TOKEN_PREFIX = "Bearer";
     static final String HEADER_STRING = "Authorization";
+
+    public static String getLoginName(String token){
+        return  Jwts.parser()
+                .setSigningKey(SECRET)
+                .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
+                .getBody()
+                .getSubject();
+    }
 
     static void addAuthentication(HttpServletResponse res, String username) {
         String JWT = Jwts.builder()
@@ -36,12 +44,6 @@ class TokenAuthenticationService {
                     .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
                     .getBody()
                     .getSubject();
-
-            System.out.println("////////////////////");
-            System.out.println("||||||||||||||||||||");
-            System.out.println(user);
-            System.out.println("||||||||||||||||||||");
-            System.out.println("////////////////////");
 
             return user != null ?
                     new UsernamePasswordAuthenticationToken(user, null, emptyList()) :

@@ -22,7 +22,7 @@ public class Account {
     private String login;
     private String password;
 
-    private List<TimeStamp> timestamps;
+    private List<TimeStamp> timestamp;
 
     public Account() {
     }
@@ -41,7 +41,7 @@ public class Account {
         return password;
     }
 
-    public List<TimeStamp> getTimestamps() {
-        return timestamps;
+    public List<TimeStamp> getTimestamp() {
+        return timestamp;
     }
 }

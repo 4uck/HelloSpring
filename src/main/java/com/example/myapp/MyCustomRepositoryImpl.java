@@ -17,4 +17,16 @@ public class MyCustomRepositoryImpl implements MyCustomRepository {
                 Query.query(Criteria.where("login").is(login)),
                 new Update().push("timestamp", timeStamp), Account.class);
     }
+
+    @Override
+    public void unsetMethod(String login) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("login").is(login));
+
+        Update update = new Update();
+        update.unset("timestamp");
+
+        // run update operation
+        mongoTemplate.updateFirst(query, update, Account.class);
+    }
 }

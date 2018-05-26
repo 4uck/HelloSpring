@@ -1,11 +1,13 @@
 package com.example.myapp;
 
+import com.example.myapp.security.TokenAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 
 @RestController
@@ -16,18 +18,6 @@ public class MyRestController {
 
     @Autowired
     private MyCustomRepositoryImpl myCustomRepositoryImpl;
-
-    @RequestMapping("/auth")
-    public Token auth(@RequestHeader(value = "login", required = true) String login,
-                      @RequestHeader(value = "password", required = true) String password){
-
-        Account account = repository.findByLogin(login);
-
-        if (account.getPassword().equals(password))
-            return new Token();
-
-        return null;
-    }
 
     @RequestMapping(value = "/checkUser", consumes = {"application/json;charset=UTF-8"})
     public ResponseEntity checkUser(@RequestBody Account account){
@@ -46,35 +36,82 @@ public class MyRestController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/timestamps", consumes = {"application/json;charset=UTF-8"})
-    public ResponseEntity timestamps(@RequestBody AddTimeStampRequest addTimeStampRequest){
+    enum  MyState{
+        PAUSE, START, STOP
+    }
+
+    @RequestMapping(value = "/timestamps/STOP", method = RequestMethod.GET)
+    public @ResponseBody TimeStampResponse getTime(
+            @RequestHeader(value = "Authorization") String token){
+
+        String login = TokenAuthenticationService.getLoginName(token);
+
+        Account account = repository.findByLogin(login);
+
+        Long timeMill = getTimeMill(account.getTimestamp());
+
+        TimeStampResponse response = new TimeStampResponse(timeMill);
+
+            myCustomRepositoryImpl.unsetMethod(login);
+
+
+        return response;
+    }
+
+    @RequestMapping(value = "/timestamps/{state}", method = RequestMethod.GET)
+    public ResponseEntity timestamps(
+            @RequestHeader(value = "Authorization") String token,
+            @PathVariable("state") MyState state){
+
+        String login = TokenAuthenticationService.getLoginName(token);
 
         Date now = new Date();
 
-        System.out.println(now.getTime());
-
-        System.out.println("//////////////////////");
-        System.out.println("//////////////////////");
-        System.out.println(addTimeStampRequest.getLogin());
-        System.out.println(addTimeStampRequest.getState());
-        System.out.println("//////////////////////");
-        System.out.println("//////////////////////");
-
-
-        myCustomRepositoryImpl.pushMethod(addTimeStampRequest.getLogin(), new TimeStamp(111111111L, 2));
+        myCustomRepositoryImpl.pushMethod(
+                login,
+                new TimeStamp(now.getTime(), state.ordinal()));
 
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    private Long getTimeMill(List<TimeStamp> timeStamps){
+
+//        for (TimeStamp e: timeStamps) {
+//            System.out.println("state: " + e.getState() + " time: " + e.getTime());
+//        }
 //
-//    @RequestMapping("/reg")
-//    public Token reg(@RequestHeader(value = "login", required = true) String login,
-//                     @RequestHeader(value = "password", required = true) String password){
+//        System.out.println("cur time: " + new Date().getTime());
 //
-//        repository.save(new User(login, password));
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+
+        Long l = 0l;
+
+        TimeStamp previousTimestamp = timeStamps.get(0);
+
+        for (TimeStamp stamp: timeStamps) {
+
+            int union = stamp.getState()^previousTimestamp.getState();
+
+            if (union == 1){
+
+//                Long curL = (stamp.getTime()-previousTimestamp.getTime())*previousTimestamp.getState();
 //
-//        return new Token();
-//    }
+//                System.out.println(
+//                        "("+stamp.getTime()+" - "+previousTimestamp.getTime()+") * "+previousTimestamp.getState()
+//                );
+
+                l += (stamp.getTime()-previousTimestamp.getTime())*previousTimestamp.getState();
+                previousTimestamp = stamp;
+            }
+        }
+
+        if (previousTimestamp.getState() == 1)
+            l += new Date().getTime()-previousTimestamp.getTime();
+
+        return l;
+    }
 
     @RequestMapping(value = "/reg", consumes = {"application/json;charset=UTF-8"})
     public @ResponseBody Account reg(@RequestBody Account account){
@@ -90,7 +127,10 @@ public class MyRestController {
     }
 
     @RequestMapping("/users")
-    public @ResponseBody String getUsers() {
+    public @ResponseBody String getUsers(
+            @RequestHeader(value = "Authorization", required = true) String token
+    ) {
+
         return "{\"users\":[{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"}," +
                 "{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}]}";
     }

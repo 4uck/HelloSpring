@@ -82,6 +82,7 @@ public class DemoApplication {
             accessList.add("/");
             accessList.add("/checkUser");
             accessList.add("/favicon.ico");
+            accessList.add("/timetest");
 
             http.csrf().disable().authorizeRequests()
                     .antMatchers(accessList.toArray(new String[accessList.size()])).permitAll()
