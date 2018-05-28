@@ -36,6 +36,14 @@ public class MyRestController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/login", consumes = {"application/json;charset=UTF-8"})
+    public @ResponseBody String login(){
+
+        System.out.println("HELLO FROM LOGIN METHOD");
+
+        return "It's work";
+    }
+
     enum  MyState{
         PAUSE, START, STOP
     }
@@ -113,18 +121,18 @@ public class MyRestController {
         return l;
     }
 
-    @RequestMapping(value = "/reg", consumes = {"application/json;charset=UTF-8"})
-    public @ResponseBody Account reg(@RequestBody Account account){
-
-        System.out.println("////////////////////////");
-        System.out.println("////////////////////////");
-        System.out.println(account.getLogin());
-        System.out.println(account.getPassword());
-        System.out.println("//////////////////////");
-        System.out.println("//////////////////////");
-
-        return account;
-    }
+//    @RequestMapping(value = "/reg", consumes = {"application/json;charset=UTF-8"})
+//    public @ResponseBody Account reg(@RequestBody Account account){
+//
+//        System.out.println("////////////////////////");
+//        System.out.println("////////////////////////");
+//        System.out.println(account.getLogin());
+//        System.out.println(account.getPassword());
+//        System.out.println("//////////////////////");
+//        System.out.println("//////////////////////");
+//
+//        return account;
+//    }
 
     @RequestMapping("/users")
     public @ResponseBody String getUsers(

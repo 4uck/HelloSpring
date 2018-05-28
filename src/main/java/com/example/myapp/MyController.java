@@ -20,12 +20,17 @@ public class MyController {
     @RequestMapping("/")
 //    @ResponseBody
     String index() {
-        return "index";
+        return "views/index";
     }
 
     @RequestMapping("/registry")
     String registry() {
-        return "registry";
+        return "views/registry";
+    }
+
+    @RequestMapping("/home")
+    String home() {
+        return "views/home";
     }
 
     @RequestMapping(value = "/registryrequest", consumes = {"multipart/form-data"})
@@ -61,16 +66,15 @@ public class MyController {
     }
 
     @RequestMapping(value = "/authrequest", consumes = {"multipart/form-data"})
-    public @ResponseBody
-    Account authRequest(
+    public String authRequest(
             @RequestPart("email") @Valid @NotNull String email,
             @RequestPart("password") @Valid @NotNull String password
     ) {
 
 
         if (repository.existsByLoginAndPassword(email, password))
-            return new Account(email, password);
+            return "home";
 
-        return new Account("not", "found");
+        return null;
     }
 }

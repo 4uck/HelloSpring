@@ -101,7 +101,7 @@ input[type="submit"] { cursor: pointer; }
 	border-radius: 0px 0px 3px 3px;
 }
 
-#login-form input[type="submit"] {
+#login-form input[type="button"] {
 	background: #1dabb8;
 	border-radius: 3px;
 	color: #fff;

@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<title>Hello Spring</title>
 	<link rel="stylesheet" href="css/into.css" media="screen" type="text/css" />
-	<!--<link rel="icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">-->
-	<!--<link rel="shortcut icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">-->
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<![endif]-->
 </head>
 <body>
@@ -18,18 +18,20 @@ alert('submit!');
  }
 </script>
 
+<script src="js/auth.js"></script>
+
     <div id="login-form">
         <h1>Авторизация на сайте</h1>
 
         <fieldset>
-            <form action=authrequest method="POST" enctype="multipart/form-data">
-                <input name="email" type="email" required value="Логин" onBlur="if(this.value=='')this.value='Логин'" onFocus="if(this.value=='Логин')this.value='' ">
-                <input name="password" type="password" required value="Пароль" onBlur="if(this.value=='')this.value='Пароль'" onFocus="if(this.value=='Пароль')this.value='' ">
-                <input type="submit" value="ВОЙТИ">
+            <div>
+                <input id="email" type="email" placeholder="email">
+                <input id="password" type="password" placeholder="Пароль">
+                <input type="button" value="ВОЙТИ" onclick="getToken()">
                 <footer class="clearfix">
                     <p><span class="info">?</span><a name="registry" href="registry">Регистрация</a></p>
                 </footer>
-            </form>
+            </div>
         </fieldset>
     </div>
 </body>
