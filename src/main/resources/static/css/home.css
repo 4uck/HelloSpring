@@ -17,18 +17,17 @@ body{
     font-size: 20px;
 }
 
-#header{
+.container2{
   height: 70px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-#header>button{
-	float: right;
-	margin: 10px;
-	vertical-align: center;
+.container2>button{
+    margin: 10px;
 }
 
-#header>h6{
-	margin: 10px;
-	float:right;
-	vertical-align: center;
+.container2>output{
+    margin: 10px;
 }
