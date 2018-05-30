@@ -4,8 +4,7 @@
 /* ---------- GENERAL ---------- */
 
 body {
-	background: url(../images/bg.png) repeat;
-	color: #999;
+	background: #1D1B26;
 	font: 100%/1.5em sans-serif;
 	margin: 0;
 }
@@ -109,6 +108,7 @@ input[type="submit"] { cursor: pointer; }
 	font-weight: bold;
 	margin-top: 20px;
 	padding: 12px 20px;
+	cursor: pointer;
 }
 
 #login-form input[type="submit"]:hover { background: #198d98; }

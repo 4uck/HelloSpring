@@ -32,6 +32,7 @@ function sendUser(email, password){
 
     if (xhr.status != 200) {
       // обработать ошибку
+      alert("Нет такого пользователя");
 //      alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
 
       return false;

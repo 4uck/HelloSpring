@@ -42,6 +42,7 @@ function sendUser(email, password){
     // 4. Если код ответа сервера не 200, то это ошибка
     if (xhr.status != 200) {
       // обработать ошибку
+      alert("Такой пользователь уже существует");
 //      alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
       return true;
     } else {
