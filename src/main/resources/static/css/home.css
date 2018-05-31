@@ -3,10 +3,31 @@ body{
 }
 .container{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     height: 100vh;
+}
+
+.container2{
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.container3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 30vh;
+    visibility: hidden;
+}
+
+
+.container3>output{
+    font-size: 250%;
 }
 
 .container>button{
@@ -15,13 +36,6 @@ body{
     width: 150px;
     height: 50px;
     font-size: 20px;
-}
-
-.container2{
-  height: 70px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .container2>button{

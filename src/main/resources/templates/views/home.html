@@ -13,15 +13,21 @@
 
 </head>
 
-<script src="js/home.js"></script>
+<script src="js/logout.js" async></script>
+<script src="js/workWithTime.js" async></script>
 
-<body onload="getName()">
+<body>
 
     <div class="container2">
         <output id="name"></output>
-        <button class="mdl-button mdl-js-button">
+        <script src="js/getNameUser.js"></script>
+        <button class="mdl-button mdl-js-button" onclick="logout()">
             ВЫЙТИ
         </button>
+    </div>
+
+    <div id="divTime" class="container3">
+        <output id="sumTime"></output>
     </div>
 
     <div class="container">
@@ -36,7 +42,7 @@
       </button>
 
       <!-- Accent-colored raised button with ripple -->
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="getTime()">
         Выгрузить
       </button>
       

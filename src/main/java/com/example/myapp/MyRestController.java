@@ -134,6 +134,14 @@ public class MyRestController {
 //        return account;
 //    }
 
+
+    @RequestMapping("/getName")
+    public @ResponseBody String getName(
+            @RequestHeader(value = "Authorization", required = true) String token
+    ){
+        return TokenAuthenticationService.getLoginName(token);
+    }
+
     @RequestMapping("/users")
     public @ResponseBody String getUsers(
             @RequestHeader(value = "Authorization", required = true) String token
