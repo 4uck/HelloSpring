@@ -1,7 +1,4 @@
 @charset "utf-8";
-/* CSS Document */
-
-/* ---------- GENERAL ---------- */
 
 body {
 	background: #1D1B26;
@@ -31,16 +28,12 @@ input {
 	-webkit-appearance: none;
 }
 
-input[type="submit"] { cursor: pointer; }
-
 .clearfix { *zoom: 1; }
 .clearfix:before, .clearfix:after {
 	content: "";
 	display: table;	
 }
 .clearfix:after { clear: both; }
-
-/* ---------- LOGIN-FORM ---------- */
 
 #login-form {
 	margin: 150px auto;
@@ -110,8 +103,6 @@ input[type="submit"] { cursor: pointer; }
 	padding: 12px 20px;
 	cursor: pointer;
 }
-
-#login-form input[type="submit"]:hover { background: #198d98; }
 
 #login-form footer {
 	font-size: 12px;
