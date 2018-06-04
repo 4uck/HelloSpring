@@ -1,7 +1,7 @@
 function getTime(){
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:8080/timestamps/STOP', true);
+    xhr.open('GET', '/timestamps/STOP', true);
     xhr.responseType = 'json';
     xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
     xhr.send();
@@ -20,7 +20,7 @@ function getTime(){
 function startTime(){
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:8080/timestamps/START', false);
+    xhr.open('GET', '/timestamps/START', false);
 
     xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
 
@@ -35,7 +35,7 @@ function startTime(){
 function pauseTime(){
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:8080/timestamps/PAUSE', false);
+    xhr.open('GET', '/timestamps/PAUSE', false);
 
     xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
 

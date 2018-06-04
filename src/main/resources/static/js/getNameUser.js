@@ -1,7 +1,7 @@
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'http://localhost:8080/getName', false);
+    xhr.open('GET', '/getName', false);
 
     xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
 

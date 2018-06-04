@@ -24,7 +24,7 @@ function sendUser(email, password){
       "password": password
     });
 
-    xhr.open('POST', 'http://localhost:8080/login', false);
+    xhr.open('POST', '/login', false);
 
     xhr.setRequestHeader('Content-type', 'application/json');
 
@@ -43,7 +43,7 @@ function sendUser(email, password){
       var token = xhr.getResponseHeader("Authorization");
       localStorage.setItem('token', token);
 
-      document.location.href="http://localhost:8080/home";
+      window.location.pathname = "/home";
 
 //      document.cookie = "Authorization=" + token + "; path=/";
 

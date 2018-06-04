@@ -32,7 +32,7 @@ function sendUser(email, password){
     });
 
     // 2. Конфигурируем его: GET-запрос на URL 'phones.json'
-    xhr.open('POST', 'http://localhost:8080/checkUser', false);
+    xhr.open('POST', '/checkUser', false);
 
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
