@@ -52,7 +52,7 @@ public class MyRestController {
 
         TimeStampResponse response = new TimeStampResponse(timeMill);
 
-//        myCustomRepositoryImpl.unsetMethod(login);
+        myCustomRepositoryImpl.unsetMethod(login);
 
         return response;
     }
