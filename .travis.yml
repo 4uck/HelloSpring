@@ -5,6 +5,6 @@ before_install:
 
 script:
   - mvn clean package
-
 after_success:
+  - echo "SUCCESS BUILD"
   - ls -l $TRAVIS_BUILD_DIR/target
