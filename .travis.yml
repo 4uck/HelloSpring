@@ -5,3 +5,6 @@ before_install:
 
 script:
   - mvn clean package
+
+after_success:
+  - ls -l $TRAVIS_BUILD_DIR/target
