@@ -4,30 +4,11 @@
     <meta charset="UTF-8">
     <title>Hello Spring</title>
     <link rel="stylesheet" href="css/registry.css" media="screen" type="text/css" />
-    <!--<link rel="icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">-->
-    <!--<link rel="shortcut icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">-->
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 <body>
-
-<!--<script type="text/javascript">-->
-    <!--function getAction(){-->
-    <!--var email = document.forms.data['email'].value;-->
-    <!--var pass = document.forms.data['password'].value;-->
-    <!--var confPass = document.forms.data['confPass'].value;-->
-    <!--if (email == '' || pass == '' || confPass == ''){-->
-    <!--alert("Fields must be filled!!!");-->
-    <!--return false;-->
-    <!--}-->
-    <!--if (pass != confPass){-->
-    <!--alert('Password and confirm must be the same!!');-->
-    <!--return false;-->
-    <!--}-->
-    <!--return true;-->
-    <!--}-->
-<!--</script>-->
 
 <script src="js/script.js"></script>
 
@@ -35,12 +16,12 @@
     <h1>Регистрация на сайте</h1>
 
     <fieldset>
-        <form name="data" action=registryrequest method="POST" enctype="multipart/form-data" onsubmit="return getAction()">
-            <input name="email" type="email" placeholder="email">
-            <input name="password" type="password" placeholder="Пароль">
-            <input name="confPass" type="password" placeholder="Повторите пароль">
-            <input type="submit" value="Регистрация">
-        </form>
+        <div name="data">
+            <input id="email" type="email" placeholder="email">
+            <input id="password" type="password" placeholder="Пароль">
+            <input id="confPass" type="password" placeholder="Повторите пароль">
+            <input type="button" value="Регистрация" onclick="getAction()">
+        </div>
     </fieldset>
 </div>
 </body>

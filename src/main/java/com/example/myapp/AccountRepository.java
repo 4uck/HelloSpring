@@ -7,4 +7,6 @@ public interface AccountRepository extends MongoRepository<Account, String>, MyC
     public Account findByLogin(String login);
 
     public boolean existsByLoginAndPassword(String login, String password);
+
+    public boolean existsByLogin(String login);
 }

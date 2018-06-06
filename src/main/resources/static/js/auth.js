@@ -8,11 +8,7 @@ function getToken(){
         return false;
     }
 
-    if(sendUser(email, pass)){
-        return true;
-    }
-
-    return false;
+    sendUser(email, pass)
 }
 
 function sendUser(email, password){
@@ -31,34 +27,13 @@ function sendUser(email, password){
     xhr.send(json);
 
     if (xhr.status != 200) {
-      // обработать ошибку
       alert("Нет такого пользователя");
-//      alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
 
-      return false;
     } else {
-      // вывести результат
-//      alert( xhr.responseText ); // responseText -- текст ответа.
-
       var token = xhr.getResponseHeader("Authorization");
       localStorage.setItem('token', token);
 
       window.location.pathname = "/home";
-
-//      document.cookie = "Authorization=" + token + "; path=/";
-
-//    $.ajax({
-//        url: "http://localhost:8080",
-//        type: "GET",
-//        beforeSend: function(xhr) {
-//            xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
-//        },
-//        success: function() {
-//            window.location.href = '/home';
-//        }
-//    });
-
-      return true;
     }
 
 }

@@ -31,8 +31,6 @@ input {
 	-webkit-appearance: none;
 }
 
-input[type="submit"] { cursor: pointer; }
-
 .clearfix { *zoom: 1; }
 .clearfix:before, .clearfix:after {
 	content: "";
@@ -100,17 +98,16 @@ input[type="submit"] { cursor: pointer; }
 	border-radius: 0px 0px 3px 3px;
 }
 
-#login-form input[type="submit"] {
+#login-form input[type="button"] {
 	background: #1dabb8;
 	border-radius: 3px;
 	color: #fff;
-	float: right;
 	font-weight: bold;
 	margin-top: 20px;
+	margin-left: 25%;
 	padding: 12px 20px;
+	cursor: pointer;
 }
-
-#login-form input[type="submit"]:hover { background: #198d98; }
 
 #login-form footer {
 	font-size: 12px;

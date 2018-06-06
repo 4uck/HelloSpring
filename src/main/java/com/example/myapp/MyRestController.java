@@ -29,23 +29,15 @@ public class MyRestController {
         System.out.println("//////////////////////");
         System.out.println("//////////////////////");
 
-        if (repository.existsByLoginAndPassword(account.getLogin(), account.getPassword())){
+        if (repository.existsByLogin(account.getLogin())){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/login", consumes = {"application/json;charset=UTF-8"})
-    public @ResponseBody String login(){
-
-        System.out.println("HELLO FROM LOGIN METHOD");
-
-        return "It's work";
-    }
-
     enum  MyState{
-        PAUSE, START, STOP
+        PAUSE, START
     }
 
     @RequestMapping(value = "/timestamps/STOP", method = RequestMethod.GET)

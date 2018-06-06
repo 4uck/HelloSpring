@@ -33,48 +33,4 @@ public class MyController {
         return "views/home";
     }
 
-    @RequestMapping(value = "/registryrequest", consumes = {"multipart/form-data"})
-    public String registryRequest(
-            @RequestPart("email") @Valid @NotNull String email,
-            @RequestPart("password") @Valid @NotNull String password,
-            @RequestPart("confPass") @Valid @NotNull String confPass
-    ) {
-
-        PasswordEncoder encoder =
-                PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
-        password = encoder.encode(password);
-
-        if (repository.existsByLoginAndPassword(email, password)) {
-
-        }
-
-
-
-        Account account = new Account(email, password);
-
-        System.out.println("////////////////////////");
-        System.out.println("////////////////////////");
-        System.out.println(email);
-        System.out.println(password);
-        System.out.println("//////////////////////");
-        System.out.println("//////////////////////");
-
-        repository.save(account);
-
-        return index();
-    }
-
-    @RequestMapping(value = "/authrequest", consumes = {"multipart/form-data"})
-    public String authRequest(
-            @RequestPart("email") @Valid @NotNull String email,
-            @RequestPart("password") @Valid @NotNull String password
-    ) {
-
-
-        if (repository.existsByLoginAndPassword(email, password))
-            return "home";
-
-        return null;
-    }
 }
