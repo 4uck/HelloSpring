@@ -44,4 +44,12 @@ public class Account {
     public List<TimeStamp> getTimestamp() {
         return timestamp;
     }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

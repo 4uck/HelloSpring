@@ -25,7 +25,7 @@ function sendUser(email, password){
       "password": password
     });
 
-    xhr.open('POST', '/checkUser', false);
+    xhr.open('POST', '/addUser', false);
 
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 

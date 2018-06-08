@@ -4,6 +4,8 @@ import com.example.myapp.security.TokenAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -19,8 +21,8 @@ public class MyRestController {
     @Autowired
     private MyCustomRepositoryImpl myCustomRepositoryImpl;
 
-    @RequestMapping(value = "/checkUser", consumes = {"application/json;charset=UTF-8"})
-    public ResponseEntity checkUser(@RequestBody Account account){
+    @RequestMapping(value = "/addUser", consumes = {"application/json;charset=UTF-8"})
+    public ResponseEntity addUser(@RequestBody Account account){
 
         System.out.println("////////////////////////");
         System.out.println("////////////////////////");
@@ -32,6 +34,13 @@ public class MyRestController {
         if (repository.existsByLogin(account.getLogin())){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+
+        PasswordEncoder encoder =
+                PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+         account.setPassword(encoder.encode(account.getPassword()));
+
+        repository.save(account);
 
         return new ResponseEntity(HttpStatus.OK);
     }

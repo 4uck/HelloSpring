@@ -77,11 +77,9 @@ public class DemoApplication {
             accessList.add("/js/**");
             accessList.add("/images/**");
             accessList.add("/home");
-            accessList.add("/authrequest");
-            accessList.add("/registryrequest");
             accessList.add("/registry");
             accessList.add("/");
-            accessList.add("/checkUser");
+            accessList.add("/addUser");
             accessList.add("/favicon.ico");
             accessList.add("/timetest");
 
