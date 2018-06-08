@@ -12,7 +12,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
 @Configuration
-@PropertySource("classpath:database_heroku.properties")
+@PropertySource("classpath:database.properties")
 public class MongoConfig extends AbstractMongoConfiguration {
 
     @Autowired
