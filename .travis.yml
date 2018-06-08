@@ -4,7 +4,7 @@ before_install:
   - chmod +x mvnw
 
 script:
-  - mvn clean package
+  - mvn clean package -PherokuMongo
 after_success:
   - echo "SUCCESS BUILD"
   - ls -l $TRAVIS_BUILD_DIR/target
