@@ -1,0 +1,18 @@
+mongo:
+  host: 192.168.0.54
+  port: 27017
+  db: mydb
+  userName: admin
+  password: admin
+  sourcedb: admin
+---
+
+spring:
+  profiles: herokudb
+mongo:
+  host: ds121730.mlab.com
+  port: 21730
+  db: heroku_81749sj1
+  userName: heroku_81749sj1
+  password: e2rd1cvot6c9mnlb4escvjldb5
+  sourcedb: heroku_81749sj1

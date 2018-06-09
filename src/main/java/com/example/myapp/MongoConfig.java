@@ -12,14 +12,18 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
 @Configuration
-@PropertySource("classpath:database.properties")
+@PropertySource("classpath:application.yml")
 public class MongoConfig extends AbstractMongoConfiguration {
 
     @Autowired
-    private Environment env;
+    Environment env;
 
     @Override
     public MongoClient mongoClient() {
+
+        System.out.println("//////////////////////////////");
+        System.out.println(env.getProperty("mongo.host"));
+        System.out.println("/////////////////////////////");
 
         MongoCredential mongoCredential = MongoCredential.
                 createScramSha1Credential(env.getProperty("mongo.userName"),
