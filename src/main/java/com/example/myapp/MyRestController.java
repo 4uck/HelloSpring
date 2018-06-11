@@ -19,7 +19,7 @@ public class MyRestController {
     private AccountRepository repository;
 
     @Autowired
-    private MyCustomRepositoryImpl myCustomRepositoryImpl;
+    private AccountCustomRepositoryImpl myCustomRepositoryImpl;
 
     @RequestMapping(value = "/addUser", consumes = {"application/json;charset=UTF-8"})
     public ResponseEntity addUser(@RequestBody Account account){

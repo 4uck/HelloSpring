@@ -25,10 +25,10 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-public class DemoApplication {
+public class TimeTrackerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(TimeTrackerApplication.class, args);
     }
 
     @Configuration

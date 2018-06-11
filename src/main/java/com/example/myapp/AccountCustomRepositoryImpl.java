@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
-public class MyCustomRepositoryImpl implements MyCustomRepository {
+public class AccountCustomRepositoryImpl implements AccountCustomRepository {
 
     @Autowired
     protected MongoTemplate mongoTemplate;

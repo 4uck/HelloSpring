@@ -1,8 +1,7 @@
 package com.example.myapp;
 
-import java.util.List;
 
-public interface MyCustomRepository {
+public interface AccountCustomRepository {
 
     public void pushMethod(String login, TimeStamp timeStamp);
 

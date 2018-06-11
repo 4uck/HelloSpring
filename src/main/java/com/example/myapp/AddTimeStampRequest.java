@@ -20,7 +20,5 @@ public class AddTimeStampRequest {
         this.state = state;
     }
 
-    public AddTimeStampRequest() {
-
-    }
+    public AddTimeStampRequest() {}
 }
