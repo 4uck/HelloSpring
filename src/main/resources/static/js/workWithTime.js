@@ -9,6 +9,17 @@ function getTime(){
     xhr.onreadystatechange = function() {
         if (xhr.readyState != 4) return;
 
+        if(xhr.status == 401){
+            localStorage.removeItem("token");
+            window.location.pathname = "/";
+            return;
+        }
+
+        if(xhr.status != 200){
+            alert("Что-то пошло не так");
+            return;
+        }
+
         var body = xhr.response;
 
         var sumTime = document.getElementById('sumTime').value =
@@ -31,6 +42,12 @@ function sendTime(action){
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState != 4) return;
+
+        if(xhr.status == 401){
+            localStorage.removeItem("token");
+            window.location.pathname = "/";
+            return;
+        }
 
         if(xhr.status != 200){
             alert("Что-то пошло не так");
