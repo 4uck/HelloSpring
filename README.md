@@ -21,4 +21,4 @@ Time tracker at spring framework
 
 
 Команда для запуска с mongodb на heroku:   
-  java -jar target/myapp-0.0.1-SNAPSHOT.jar --spring.profiles.active=herokudb   
+  'java -jar target/myapp-0.0.1-SNAPSHOT.jar --spring.profiles.active=herokudb'   
