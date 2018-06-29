@@ -11,6 +11,11 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
+/**
+ * This class for Spring Data MongoDB configuration.
+ * config file, see: "src/main/resources/application.yml"
+ */
+
 @Configuration
 @PropertySource("classpath:application.yml")
 public class MongoConfig extends AbstractMongoConfiguration {
@@ -20,10 +25,6 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     public MongoClient mongoClient() {
-
-        System.out.println("//////////////////////////////");
-        System.out.println(env.getProperty("mongo.host"));
-        System.out.println("/////////////////////////////");
 
         MongoCredential mongoCredential = MongoCredential.
                 createScramSha1Credential(env.getProperty("mongo.userName"),

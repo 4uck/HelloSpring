@@ -1,3 +1,7 @@
+/**
+ * this class implements default interface and my custom interface.
+ */
+
 package com.example.myapp;
 
 import org.springframework.data.mongodb.repository.MongoRepository;

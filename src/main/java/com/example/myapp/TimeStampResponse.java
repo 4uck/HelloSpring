@@ -1,13 +1,13 @@
 package com.example.myapp;
 
-public class TimeStampResponse {
+public final class TimeStampResponse {
 
     private Long currentTimeMilliseconds;
     private int seconds;
     private int minutes;
     private int hours;
 
-    public TimeStampResponse(Long currentTimeMilliseconds) {
+    public TimeStampResponse(final Long currentTimeMilliseconds) {
         this.currentTimeMilliseconds = currentTimeMilliseconds;
         this.seconds = (int) (currentTimeMilliseconds/1000)%60;
         this.minutes = (int) (currentTimeMilliseconds/60000) % 60;

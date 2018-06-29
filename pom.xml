@@ -80,33 +80,4 @@
 			</resource>
 		</resources>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>localMongo</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<host>192.168.0.54</host>
-				<port>27017</port>
-				<db>mydb</db>
-				<userName>admin</userName>
-				<password>admin</password>
-				<sourcedb>admin</sourcedb>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>herokuMongo</id>
-			<properties>
-				<host>ds121730.mlab.com</host>
-				<port>21730</port>
-				<db>heroku_81749sj1</db>
-				<userName>heroku_81749sj1</userName>
-				<password>e2rd1cvot6c9mnlb4escvjldb5</password>
-				<sourcedb>heroku_81749sj1</sourcedb>
-			</properties>
-		</profile>
-	</profiles>
 </project>

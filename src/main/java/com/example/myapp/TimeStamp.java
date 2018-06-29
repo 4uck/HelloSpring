@@ -1,6 +1,6 @@
 package com.example.myapp;
 
-public class TimeStamp {
+public final class TimeStamp {
 
     private Long time;
     private int state;
@@ -8,7 +8,7 @@ public class TimeStamp {
     public TimeStamp() {
     }
 
-    public TimeStamp(Long time, int state) {
+    public TimeStamp(final Long time, final int state) {
         this.time = time;
         this.state = state;
     }

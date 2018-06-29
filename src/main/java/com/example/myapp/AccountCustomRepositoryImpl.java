@@ -6,20 +6,24 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
-public class AccountCustomRepositoryImpl implements AccountCustomRepository {
+/**
+ * Implementation for {@link com.example.myapp.AccountCustomRepository}.
+ */
+
+public final class AccountCustomRepositoryImpl implements AccountCustomRepository {
 
     @Autowired
-    protected MongoTemplate mongoTemplate;
+    private MongoTemplate mongoTemplate;
 
     @Override
-    public void pushMethod(String login, TimeStamp timeStamp) {
+    public void pushMethod(final String login, final TimeStamp timeStamp) {
         mongoTemplate.updateFirst(
                 Query.query(Criteria.where("login").is(login)),
                 new Update().push("timestamp", timeStamp), Account.class);
     }
 
     @Override
-    public void unsetMethod(String login) {
+    public void unsetMethod(final String login) {
         Query query = new Query();
         query.addCriteria(Criteria.where("login").is(login));
 
