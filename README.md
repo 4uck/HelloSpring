@@ -15,7 +15,8 @@ Time tracker at spring framework
  При нажатии на кнопку "Отработал" будет отображено сумарное время, с учетом всех "Пришел", "Ушел".
 
 ## Как запустить
- В файле src/resources/application.yml описаны профили spring.
- В этих профилях описаны соответствующие данные для доступа к mongodb.
- Можно описать там свой профиль, либо использовать общедоступную базу на heroku. Команда для запуска с mongodb на heroku:
+В файле src/resources/application.yml описаны профили spring.
+В этих профилях описаны соответствующие данные для доступа к mongodb.
+Можно описать там свой профиль, либо использовать общедоступную базу на heroku.
+Команда для запуска с mongodb на heroku:
   java -jar target/myapp-0.0.1-SNAPSHOT.jar --spring.profiles.active=herokudb
